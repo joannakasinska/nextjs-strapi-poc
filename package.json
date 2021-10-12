@@ -1,15 +1,46 @@
 {
-  "name": "nextjs-strapi-poc",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start"
-  },
-  "dependencies": {
-    "next": "11.1.2",
-    "react": "17.0.2",
-    "react-dom": "17.0.2"
-  }
+    "name": "nextjs-strapi-poc",
+    "version": "0.1.0",
+    "private": true,
+    "scripts": {
+        "dev": "next dev",
+        "build": "next build",
+        "start": "next start",
+        "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
+        "prepare": "husky install",
+        "eslint:check": "tsc --noEmit && eslint \"**/*.{js,jsx,ts,tsx}\" && prettier --check src/*",
+        "eslint:fix": "tsc --noEmit && eslint --fix \"**/*.{js,jsx,ts,tsx}\" && prettier --write src/*"
+    },
+    "lint-staged": {
+        "**/*.{js,jsx,ts,tsx,json,yml,md,html}": [
+            "prettier --write --no-verify"
+        ]
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "lint-staged"
+        }
+    },
+    "dependencies": {
+        "next": "11.1.2",
+        "react": "17.0.2",
+        "react-dom": "17.0.2"
+    },
+    "devDependencies": {
+        "@types/node": "^16.10.3",
+        "@types/react": "^17.0.28",
+        "@typescript-eslint/eslint-plugin": "^5.0.0",
+        "css-loader": "^6.4.0",
+        "eslint": "^7.32.0",
+        "eslint-config-prettier": "^8.3.0",
+        "eslint-plugin-import": "^2.25.1",
+        "eslint-plugin-prettier": "^4.0.0",
+        "eslint-plugin-react": "^7.26.1",
+        "eslint-plugin-react-hooks": "^4.2.0",
+        "husky": "^7.0.2",
+        "prettier": "^2.4.1",
+        "sass": "^1.42.1",
+        "sass-loader": "^12.2.0",
+        "typescript": "^4.4.3"
+    }
 }
